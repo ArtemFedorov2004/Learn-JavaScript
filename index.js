@@ -1,21 +1,30 @@
-function getRaitingDescription(raiting) {
-    let desription = "";
-    switch (raiting) {
-        case 0:
-            desription += 'Best';
-            desription += 'Best';
-            break;
-        case 1:
-            desription += 'Very Good';
-            break;
-        case 2:
-            desription += 'Awfull';
-            break;
-        default:
-            desription += 'Default';
-            break;
+function sumArrayValues(array) {
+    let result = 0;
+    if (!Array.isArray(array)) {
+        throw new TypeError('Argument is not an array');
     }
-    return desription;
+    for (let i = 0; i < array.length; i++) {
+        if (isNaN(array[i])) {
+            throw new TypeError('Array element is not a number');
+        }
+        else {
+            result += parseInt(array[i]);
+        }
+
+    }
+    return result;
 }
-let desription = getRaitingDescription(0);
-console.log(desription);
+const array = [4, 'nn', 8];
+//const array = { firstName: "John", lastName: "Doe", age: 50, eyeColor: "blue" };
+//const array = '4445';
+try {
+    console.log(sumArrayValues(array));
+}
+catch (error) {
+    if (error instanceof TypeError) {
+        console.error(error);
+    }
+}
+finally {
+    console.log('...continue');
+}
